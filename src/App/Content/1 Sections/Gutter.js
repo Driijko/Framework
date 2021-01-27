@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 
-import direction from "../4 Styling/helpers/direction";
+import direction from "../../Tools/Styling Functions/direction";
 
 function positioning(spatial) {
     return `

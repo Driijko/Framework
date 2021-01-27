@@ -6,18 +6,17 @@ import styled, {css} from "styled-components";
 
 // Import Components -----------------------------------------------------
 import UniformResponse from "../../Tools/UniformResponse/UniformResponse";
-import Gutter from "../2 Layers/Gutter";
-import SiteDiv from "./SiteDiv";
+import Gutter from "./Gutter";
 
 // Import Custom Hooks ----------------------------------------------------
 import useKey from "../../Tools/useKey";
 
 // Import helpers -----------------------------------------------------------
-import direction from "../4 Styling/helpers/direction";
+import direction from "../../Tools/Styling Functions/direction";
 
 // Sfx Imports -----------------------------------------------------------------
-import Audio from "../../Tools/Audio";
-import sfxEnterExit from "../5 Assets/audio/sfx/enterExit.mp3";
+// import Audio from "../../Tools/Audio";
+// import sfxEnterExit from "../5 Assets/audio/sfx/enterExit.mp3";
 
 // STYLE ////////////////////////////////////////////////////////////////////
 function animate(phase) {
@@ -44,7 +43,7 @@ const exitTime = 2;
 export default function Page({children, maxFocusableElements}) {
 
     // SFX //////////////////////////////////////////////////////////////////
-    const [playSfx, setPlaySfx] = useState(0);
+    // const [playSfx, setPlaySfx] = useState(0);
 
     // PHASE /////////////////////////////////////////////////////////////////
     const [phase, setPhase] = useState("enter");
@@ -58,7 +57,7 @@ export default function Page({children, maxFocusableElements}) {
     // the 'checkReadyForSteady' and 'toSteadyTimerId' state variables.
     useEffect(()=> {
         if (phase === "enter") {
-            setPlaySfx(null);
+            // setPlaySfx(null);
             setToSteadyTimerId(setTimeout(() => {
                 if (phase === "enter") {
                     setCheckReadyForSteady(true);
@@ -89,7 +88,7 @@ export default function Page({children, maxFocusableElements}) {
         if (phase !== "exiting") {
             setLeaveTo(to);
             setPhase("exiting");
-            setPlaySfx(0);
+            // setPlaySfx(0);
         };
     };
 
@@ -136,13 +135,12 @@ export default function Page({children, maxFocusableElements}) {
 
     return (
         <div>
-            <SiteDiv />
             <PageDiv phase={phase}>
                 {phase === "exit" ?
                     <Redirect to={leaveTo}/>
                     : null
                 } 
-                <Audio audio={[sfxEnterExit]} playAudio={playSfx} />
+                {/* <Audio audio={[sfxEnterExit]} playAudio={playSfx} /> */}
                 <UniformResponse>
                     {layers}
                 </UniformResponse>

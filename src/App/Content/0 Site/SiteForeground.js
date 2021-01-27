@@ -80,9 +80,13 @@ function animate(foregroundAnimate) {
 
 const SiteForegroundDiv = styled("div")`${({foregroundAnimate})=>css`
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+    box-sizing: border-box;
 
+    border: 10px solid red;
     background-image: linear-gradient(black, red);
     ${animate(foregroundAnimate)}
 `}`;

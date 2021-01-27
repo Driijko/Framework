@@ -11,9 +11,8 @@ import {SiteForegroundContextProvider} from "./Content/0 Site/SiteForeground";
 // Import Components ---------------------------------------------
 import SiteBackground from "./Content/0 Site/SiteBackground";
 import {SiteForeground} from "./Content/0 Site/SiteForeground";
-import Test from "./Content/0 Site/test";
-import SiteForegroundAnimationTrigger from "./Examples/SiteForegroundAnimationTrigger";
-// import Page0 from "./Content/1 Sections/Page0";
+import Page0 from "./Content/1 Sections/Page0/Page0";
+import HomePage from "./Old Content/1 Pages/HomePage";
 
 // Import Music ---------------------------------------------- 
 // import Audio from "./Tools/Audio";
@@ -27,10 +26,9 @@ function App() {
       <SiteForegroundContextProvider>
         <Router>
           <Switch>
-            <Route path="/" component={SiteForegroundAnimationTrigger} />
+            <Route path="/" component={Page0} />
           </Switch>
         </Router>
-        <Test />
         <SiteForeground />
       </SiteForegroundContextProvider>
     </div>
