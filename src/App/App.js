@@ -5,30 +5,27 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 // Import Universal Styles ------------------------------------------
 import "./App.css";
 
-// Import Pages ---------------------------------------------
-import SplashScreen from "./Content/1 Pages/SplashScreen";
-import HomePage from "./Content/1 Pages/HomePage";
-import ThemeHeaderPage from "./Content/1 Pages/Theme Section/ThemeHeaderPage";
-import InspirationPage1 from "./Content/1 Pages/Theme Section/Articles/Inspiration/InspirationPage1";
-import InspirationPage2 from "./Content/1 Pages/Theme Section/Articles/Inspiration/InspirationPage2";
+// Import Components ---------------------------------------------
+import SiteBackground from "./Content/0 Site/SiteBackground";
+import SiteForeground from "./Content/0 Site/SiteForeground";
+import Test from "./Content/0 Site/test";
+// import Page0 from "./Content/1 Sections/Page0";
 
 // Import Music ---------------------------------------------- 
-import Audio from "./Tools/Audio";
-import music from "./Content/5 Assets/audio/music/music.mp3";
+// import Audio from "./Tools/Audio";
+// import music from "./Content/2 Assets/audio/music/music.mp3";
 
 function App() {
   return (
     <div>
-      <Audio audio={[music]} playAudio={0} loop />
+      <SiteBackground />
+      {/* <Audio audio={[music]} playAudio={0} loop /> */}
       <Router>
         <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route exact path="/" component={SplashScreen} />
-          <Route path="/theme/inspiration/page2" component={InspirationPage2} />
-          <Route path="/theme/inspiration/page1" component={InspirationPage1} />
-          <Route path="/theme" component={ThemeHeaderPage} />
+          <Route path="/" component={Test} />
         </Switch>
       </Router>
+      <SiteForeground />
     </div>
   );
 };
