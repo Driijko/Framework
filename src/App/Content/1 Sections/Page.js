@@ -6,7 +6,6 @@ import styled, {css} from "styled-components";
 
 // Import Components -----------------------------------------------------
 import UniformResponse from "../../Tools/UniformResponse/UniformResponse";
-import Gutter from "./Gutter";
 
 // Import Custom Hooks ----------------------------------------------------
 import useKey from "../../Tools/useKey";
@@ -122,9 +121,6 @@ export default function Page({children, maxFocusableElements}) {
                     "triggerExit": triggerExit,
                 })
             );
-            layers.push(
-                <Gutter />
-            );
         }
         else {
             layers.push(child);
@@ -146,6 +142,5 @@ export default function Page({children, maxFocusableElements}) {
                 </UniformResponse>
             </PageDiv>
         </div>
-
     );
 };

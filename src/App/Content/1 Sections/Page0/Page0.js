@@ -9,7 +9,7 @@ export default function Page0(props) {
     return (
         <Page maxFocusableElements={0}>
             <Page0Layer0 />
-            {/* <Gutter /> */}
+            <Gutter />
             <Page0Layer1 />
         </Page>
     );
