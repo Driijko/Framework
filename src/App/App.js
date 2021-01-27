@@ -5,9 +5,12 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 // Import Universal Styles ------------------------------------------
 import "./App.css";
 
+// Import context / providers ----------------------------------------
+import {SiteForegroundContextProvider} from "./Content/0 Site/SiteForeground";
+
 // Import Components ---------------------------------------------
 import SiteBackground from "./Content/0 Site/SiteBackground";
-import SiteForeground from "./Content/0 Site/SiteForeground";
+import {SiteForeground} from "./Content/0 Site/SiteForeground";
 import Test from "./Content/0 Site/test";
 // import Page0 from "./Content/1 Sections/Page0";
 
@@ -20,12 +23,14 @@ function App() {
     <div>
       <SiteBackground />
       {/* <Audio audio={[music]} playAudio={0} loop /> */}
-      <Router>
-        <Switch>
-          <Route path="/" component={Test} />
-        </Switch>
-      </Router>
-      <SiteForeground />
+      <SiteForegroundContextProvider>
+        <Router>
+          <Switch>
+            <Route path="/" component={Test} />
+          </Switch>
+        </Router>
+        <SiteForeground />
+      </SiteForegroundContextProvider>
     </div>
   );
 };

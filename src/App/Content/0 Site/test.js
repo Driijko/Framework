@@ -1,14 +1,30 @@
+// IMPORTS ///////////////////////////////////////////////////////
+// Import libraries ----------------------------------------------
+import {useContext} from "react";
 import styled from "styled-components";
 
-const Test = styled("div")`
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
+// Import context / providers ----------------------------------
+import SiteForegroundContextProvider from "./SiteForegroundContext";
+import SiteForegroundContext from "./SiteForeground";
 
-    background-color: blue;
-    box-sizing: border-box;
-    border: 100px solid magenta;
-    opacity: 0.1;
+// STYLE /////////////////////////////////////////////////////////
+const SiteForegroundAnimationTrigger = styled("button")`
+    position: absolute;
+    font-size: 50px;
 `;
+
+function Test(props) {
+    const {triggerForegroundAnimate} = useContext(SiteForegroundContext);
+
+    return (
+        <SiteForegroundAnimationTrigger 
+            onClick={
+                triggerForegroundAnimate
+            }
+        >
+            TEST
+        </SiteForegroundAnimationTrigger>
+    );  
+};
 
 export default Test;
