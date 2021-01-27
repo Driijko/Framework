@@ -1,28 +1,34 @@
 // IMPORTS ///////////////////////////////////////////////////////
 // Import libraries ----------------------------------------------
-import {useContext} from "react";
-import styled from "styled-components";
+import {useState} from "react";
+import styled, {css} from "styled-components";
 
 // Import context / providers ----------------------------------
-import SiteForegroundContextProvider from "./SiteForegroundContext";
 import SiteForegroundContext from "./SiteForeground";
 
 // STYLE /////////////////////////////////////////////////////////
-const SiteForegroundAnimationTrigger = styled("button")`
+const SiteForegroundAnimationTrigger = styled("button")`${({color})=>css`
     position: absolute;
+    top: 100px;
     font-size: 50px;
-`;
+    color: ${color};
+`}`;
 
 function Test(props) {
-    const {triggerForegroundAnimate} = useContext(SiteForegroundContext);
+    const [color, setColor] = useState("purple");
+
+    function changeColor() {
+        if (color === "purple") {
+            setColor("red");
+        }
+        else {
+            setColor("purple");
+        };
+    };
 
     return (
-        <SiteForegroundAnimationTrigger 
-            onClick={
-                triggerForegroundAnimate
-            }
-        >
-            TEST
+        <SiteForegroundAnimationTrigger color={color} onClick={changeColor}>
+            TEST2
         </SiteForegroundAnimationTrigger>
     );  
 };

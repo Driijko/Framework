@@ -4,12 +4,16 @@ import {useContext, createContext, useState, useEffect} from "react";
 import styled, {css, keyframes} from "styled-components";
 
 // SETTINGS /////////////////////////////////////////////////////////////
+// This value is used to determine how long the animation runs, as well
+// as how long the state variable 'foregroundAnimate' is reset to 'false'
+// after being set to 'true'.
 const animationDuration = 5;
 
 // CONTEXT ////////////////////////////////////////////////////////
 const SiteForegroundContext = createContext();
 
 function SiteForegroundContextProvider({children}) {
+
     const [foregroundAnimate, setForegroundAnimate] = useState(false);
 
     useEffect(()=> {
@@ -18,7 +22,7 @@ function SiteForegroundContextProvider({children}) {
                 setForegroundAnimate(false);
             }, animationDuration * 1000);
         };
-    },[foregroundAnimate])
+    },[foregroundAnimate]);
 
     function triggerForegroundAnimate() {
         setForegroundAnimate(true);
@@ -60,11 +64,16 @@ function animate(foregroundAnimate) {
     if (foregroundAnimate === false) {
         return `
             opacity: 0;
+            pointer-events: none;
         `;
     }
     else {
         return css`
-            animation: ${animationSequence} ${animationDuration}s linear forwards;
+            animation: 
+                ${animationSequence} 
+                ${animationDuration}s 
+                linear 
+                forwards;
         `;
     };
 };
@@ -73,7 +82,6 @@ const SiteForegroundDiv = styled("div")`${({foregroundAnimate})=>css`
     position: absolute;
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
 
     background-image: linear-gradient(black, red);
     ${animate(foregroundAnimate)}
