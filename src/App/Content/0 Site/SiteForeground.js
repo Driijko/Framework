@@ -7,7 +7,7 @@ import styled, {css, keyframes} from "styled-components";
 // This value is used to determine how long the animation runs, as well
 // as how long the state variable 'foregroundAnimate' is reset to 'false'
 // after being set to 'true'.
-const animationDuration = 5;
+import {pageTransitionDuration} from "../../settings";
 
 // CONTEXT ////////////////////////////////////////////////////////
 const SiteForegroundContext = createContext();
@@ -20,7 +20,7 @@ function SiteForegroundContextProvider({children}) {
         if (foregroundAnimate) {
             setTimeout(()=> {
                 setForegroundAnimate(false);
-            }, animationDuration * 1000);
+            }, pageTransitionDuration * 1000);
         };
     },[foregroundAnimate]);
 
@@ -71,7 +71,7 @@ function animate(foregroundAnimate) {
         return css`
             animation: 
                 ${animationSequence} 
-                ${animationDuration}s 
+                ${pageTransitionDuration}s 
                 linear 
                 forwards;
         `;

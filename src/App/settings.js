@@ -20,10 +20,11 @@ const gridMultiplier = 10;
 // Delay time after user resizes window before page refresh.
 const delay = 2000;
 
-// COLOR SCHEME //////////////////////////////////////////////////////////////////
-const color1 = "hsl(20, 70%, 60%)";
-const color2 = "hsl(0, 50%, 50%)";
-
+// PAGE TRANSITION DURATION ///////////////////////////////////////////////
+// The time, in seconds, it takes to fade out one page and fade in another.
+// This number is used by the Page component as well as the SiteForeground
+// component.
+const pageTransitionDuration = 4;
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -32,7 +33,7 @@ const ver = calcUnits(ratioHeight, gridMultiplier);
 
 export {
     ratioWidth, ratioHeight, ratio, gapRatio,
-    delay, hor, ver, color1, color2,
+    delay, hor, ver, pageTransitionDuration,
 };
 
 function calcUnits(dimension, gridMultiplier) {

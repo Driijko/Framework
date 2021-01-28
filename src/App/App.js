@@ -26,7 +26,7 @@ function App() {
       <SiteForegroundContextProvider>
         <Router>
           <Switch>
-            <Route path="/" component={Page0} />
+            <Route exact path="/" component={Page0} />
             <Route path="/test" component={Page1} />
           </Switch>
         </Router>

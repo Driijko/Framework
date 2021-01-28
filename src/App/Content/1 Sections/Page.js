@@ -1,8 +1,11 @@
 // IMPORTS //////////////////////////////////////////////////////////
 // Import libraries --------------------------------------------------
-import {useState, useEffect, Children, cloneElement} from "react";
+import {useState, useEffect, Children, cloneElement, useContext} from "react";
 import {Redirect} from "react-router-dom";
 import styled, {css} from "styled-components";
+
+// Import Context ----------------------------------------------------
+import SiteForegroundContext from "../0 Site/SiteForeground";
 
 // Import Components -----------------------------------------------------
 import UniformResponse from "../../Tools/UniformResponse/UniformResponse";
@@ -12,6 +15,9 @@ import useKey from "../../Tools/useKey";
 
 // Import helpers -----------------------------------------------------------
 import direction from "../../Tools/Styling Functions/direction";
+
+// Import settings --------------------------------------------------------
+import {pageTransitionDuration} from "../../settings"; 
 
 // Sfx Imports -----------------------------------------------------------------
 // import Audio from "../../Tools/Audio";
@@ -35,11 +41,15 @@ const PageDiv = styled("div")`${({phase})=>css`
     ${animate(phase)};
 `}`;
 
-// SETTINGS /////////////////////////////////////////////////////////////////
-const enterTime = 2;
-const exitTime = 2;
+// SETTINGS /////////////////////////////////////////////////////
+const enterTime = pageTransitionDuration / 2;
+const exitTime = pageTransitionDuration / 2;
 
+// COMPONENT ////////////////////////////////////////////////////////////
 export default function Page({children, maxFocusableElements}) {
+
+    // CONTEXT /////////////////////////////////////////////////////////////
+    const {triggerForegroundAnimate} = useContext(SiteForegroundContext);
 
     // SFX //////////////////////////////////////////////////////////////////
     // const [playSfx, setPlaySfx] = useState(0);
@@ -65,6 +75,7 @@ export default function Page({children, maxFocusableElements}) {
             }, enterTime * 1000));
         }
         else if (phase === "exiting") {
+            triggerForegroundAnimate();
             const timerId = setTimeout(()=> {
                 setPhase("exit");
                 clearTimeout(timerId);
