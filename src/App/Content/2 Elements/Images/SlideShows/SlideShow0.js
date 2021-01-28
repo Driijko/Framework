@@ -1,6 +1,7 @@
 // IMPORTS //////////////////////////////////////////////////
 // Import components ---------------------------------------
 import Image from "../Image";
+import Caption0 from "../../Text/Captions/Caption0";
 
 // Import images --------------------------------------------
 import image from "../../../3 Assets/visual/images/image.jpg";
@@ -15,14 +16,22 @@ const alts = [
 ];
 
 // COMPONENT /////////////////////////////////////////////////////////
-function SlideShow0({width, spatial, currentImageIndex}) {
+function SlideShow0({width, spatial, currentImageIndex, captionSpatial}) {
     return (
-        <Image
-            width={width}
-            spatial={spatial}
-            src={images[currentImageIndex]}
-            alt={alts[currentImageIndex]}
-        />
+        <figure>
+            <Image
+                width={width}
+                spatial={spatial}
+                src={images[currentImageIndex]}
+                alt={alts[currentImageIndex]}
+            />
+            <Caption0
+                width={width}
+                spatial={captionSpatial}
+            >
+                {alts[currentImageIndex]}
+            </Caption0>
+        </figure>
     );
 };
 

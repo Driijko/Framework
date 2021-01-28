@@ -11,10 +11,11 @@ function Page1Layer0({width, tabIndex, enterSelect, triggerExit}) {
         <Layer>
             <SlideShow 
                 width={width}
-                spatial={[1, 7, 18, 15]}
+                spatial={[1, 6, 18, 15]}
                 duration={5}
                 numOfImages={3}
                 number={0}
+                captionSpatial={[2, 22, 16, 2]}
             />
         </Layer>
     );
