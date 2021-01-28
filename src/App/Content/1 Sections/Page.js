@@ -100,8 +100,8 @@ export default function Page({children, maxFocusableElements}) {
 
     useEffect(()=> {
         if (tab) {
-            if (tabIndex > maxFocusableElements) {
-                setTabIndex(1);
+            if (tabIndex === maxFocusableElements) {
+                setTabIndex(0);
             }
             else {
                 setTabIndex(tabIndex + 1);
@@ -116,8 +116,9 @@ export default function Page({children, maxFocusableElements}) {
         if (index === 0) {
             layers.push(
                 cloneElement(child, {
+                    key: index,
                     tabIndex: tabIndex,
-                    enterSelect: enter,
+                    enter: enter,
                     "triggerExit": triggerExit,
                 })
             );

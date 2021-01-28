@@ -2,15 +2,17 @@
 // Import components -----------------------------------------------
 import Page from "../Page";
 import Gutter from "../Gutter";
-import Page0Layer0 from "./Page0Layer0";
-import Page0Layer1 from "./Page0Layer1";
+import Page1Layer0 from "./Page1Layer0";
+import Page1Layer1 from "./Page1Layer1";
 
-export default function Page0(props) {
+function Page1(props) {
     return (
-        <Page maxFocusableElements={1}>     
-            <Page0Layer0 />
+        <Page maxFocusableElements={0}>
+            <Page1Layer0 />
             <Gutter />
-            <Page0Layer1 />
+            <Page1Layer1 />
         </Page>
     );
 };
+
+export default Page1;

@@ -12,7 +12,7 @@ import {SiteForegroundContextProvider} from "./Content/0 Site/SiteForeground";
 import SiteBackground from "./Content/0 Site/SiteBackground";
 import {SiteForeground} from "./Content/0 Site/SiteForeground";
 import Page0 from "./Content/1 Sections/Page0/Page0";
-import HomePage from "./Old Content/1 Pages/HomePage";
+import Page1 from "./Content/1 Sections/Page1/Page1";
 
 // Import Music ---------------------------------------------- 
 // import Audio from "./Tools/Audio";
@@ -27,6 +27,7 @@ function App() {
         <Router>
           <Switch>
             <Route path="/" component={Page0} />
+            <Route path="/test" component={Page1} />
           </Switch>
         </Router>
         <SiteForeground />
