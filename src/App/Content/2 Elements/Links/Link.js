@@ -6,7 +6,7 @@ import LinkStyle0 from "./LinkStyles/LinkStyle0";
 
 // COMPONENT //////////////////////////////////////////////////////
 function Link({
-    linkType, linkStyle, spatial, width, focus, enterSelect
+    linkType, linkStyle, spatial, width, focus, enterSelect, children
 }) {
 
 
@@ -19,7 +19,9 @@ function Link({
                 spatial={spatial}
                 colors={linkStyle.colors}
                 width={width}
-            >LINK</LinkStyle0>
+            >
+                {children}
+            </LinkStyle0>
         );
     }
     // TYPE ////////////////////////////////////////////////////

@@ -25,7 +25,9 @@ function Page0Layer0({width, tabIndex, enter, triggerExit}) {
                 spatial={[0, 0, 20, 10]}
                 focus={tabIndex === 1}
                 enterSelect={tabIndex === 1 && enter}
-            />
+            >
+                LINK 1
+            </Link>
             <Link 
                 linkType={{
                     type: "site",
@@ -44,7 +46,9 @@ function Page0Layer0({width, tabIndex, enter, triggerExit}) {
                 spatial={[0, 11, 20, 10]}
                 focus={tabIndex === 2}
                 enterSelect={tabIndex === 2 && enter}
-            />
+            >
+                LINK 2  
+            </Link>
         </Layer>
     );
 };
