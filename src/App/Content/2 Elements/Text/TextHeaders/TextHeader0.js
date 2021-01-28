@@ -3,12 +3,12 @@
 import styled, {css} from "styled-components";
 
 // Import helpers --------------------------------------------
-import positioning from "../../../Tools/Styling Functions/positioning";
+import positioning from "../../../../Tools/Styling Functions/positioning";
 
 const levelToFontSize = [6, 7, 8, 10, 12, 15]
 
 // COMPONENT //////////////////////////////////////////////////
-const TextHeader = styled("div")`${({
+const TextHeader0 = styled("div")`${({
     level, width, spatial,
 })=>css`
     ${positioning(spatial)}
@@ -20,4 +20,4 @@ const TextHeader = styled("div")`${({
     font-size: ${width/levelToFontSize[level - 1]}px;
 `}`;
 
-export default TextHeader;
+export default TextHeader0;
