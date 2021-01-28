@@ -97,14 +97,25 @@ export default function Page({children, maxFocusableElements}) {
     // 'useKey' returns true if key is held down.
     const tab = useKey("Tab");
     const enter = useKey("Enter");
+    const shift = useKey("Shift");
 
     useEffect(()=> {
         if (tab) {
-            if (tabIndex === maxFocusableElements) {
-                setTabIndex(0);
+            if (shift) {
+                if (tabIndex === 0) {
+                    setTabIndex(maxFocusableElements);
+                }
+                else {
+                    setTabIndex(tabIndex - 1);
+                };
             }
             else {
-                setTabIndex(tabIndex + 1);
+                if (tabIndex === maxFocusableElements) {
+                    setTabIndex(0);
+                }
+                else {
+                    setTabIndex(tabIndex + 1);
+                };
             };
         };
     },[tab]);
