@@ -3,7 +3,6 @@
 import Layer from "../Layer";
 
 import SlideShow from "../../2 Elements/Images/SlideShow";
-import SlideShow0 from "../../2 Elements/Images/SlideShows/SlideShow0";
 
 // COMPONENT ////////////////////////////////////////////////////
 function Page1Layer0({width, tabIndex, enterSelect, triggerExit}) {
