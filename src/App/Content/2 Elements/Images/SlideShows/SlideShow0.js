@@ -1,7 +1,6 @@
 // IMPORTS //////////////////////////////////////////////////
 // Import components ---------------------------------------
 import Image from "../Image";
-import SlideShowImage from "../SlideShowImage";
 import Caption0 from "../../Text/Captions/Caption0";
 
 // Import images --------------------------------------------
@@ -22,16 +21,10 @@ function SlideShow0({
 }) {
     return (
         <figure>
-            {/* <Image
+            <Image
                 spatial={spatial}
                 src={images[currentImageIndex]}
                 alt={alts[currentImageIndex]}
-            /> */}
-            <SlideShowImage
-                spatial={spatial}
-                src={images[currentImageIndex]}
-                alt={alts[currentImageIndex]}
-                imageFadePhase={imageFadePhase}
             />
             <Caption0
                 width={width}

@@ -9,7 +9,7 @@ function Page0Layer0({width, tabIndex, enter, triggerExit}) {
         <Layer>
             <Link 
                 linkType={{
-                    type: "site",
+                    type: "section",
                     "triggerExit": triggerExit,
                     linkTo: "/test"
                 }}
@@ -30,7 +30,7 @@ function Page0Layer0({width, tabIndex, enter, triggerExit}) {
             </Link>
             <Link 
                 linkType={{
-                    type: "site",
+                    type: "section",
                     "triggerExit": triggerExit,
                     linkTo: "/test"
                 }}
