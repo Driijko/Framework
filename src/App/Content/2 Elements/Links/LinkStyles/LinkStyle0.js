@@ -35,7 +35,7 @@ const LinkStyle0 = styled("a")`${({
     ${transitions(interactivity, colors, width)}
     transition-timing-function: ease-in;
     box-sizing: border-box;
-    border: 5px solid purple;
+    border: 5px solid gold;
     display: flex;
     justify-content: center;
     align-items: center;

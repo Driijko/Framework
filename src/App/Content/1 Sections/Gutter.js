@@ -33,6 +33,9 @@ const GutterDiv = styled("div")`${({spatial})=>css`
 
 export default function Gutter({type, middle, side}) {
 
+    // Delete the next line to restore gutters:
+    return <div></div>;
+    
     if (type === "horizontal") {
         return (
             <WindowDiv>
