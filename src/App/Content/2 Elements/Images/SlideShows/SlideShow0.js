@@ -15,9 +15,15 @@ const alts = [
     "Frank Stella painting",
 ];
 
+const captionText = [
+    ["Composition 82", "by Piet Mondrian"],
+    ["Yellow and Orange", "by Agnes Martin"],
+    ["Hard Lines", "by Frank Stella"],
+];
+
 // COMPONENT /////////////////////////////////////////////////////////
 function SlideShow0({
-    width, spatial, currentImageIndex, captionSpatial, imageFadePhase
+    width, spatial, currentImageIndex, captionSpatial
 }) {
     return (
         <figure>
@@ -30,7 +36,10 @@ function SlideShow0({
                 width={width}
                 spatial={captionSpatial}
             >
-                {alts[currentImageIndex]}
+                {captionText[currentImageIndex][0]}
+                <br/>
+                {captionText[currentImageIndex][1]}
+                
             </Caption0>
         </figure>
     );

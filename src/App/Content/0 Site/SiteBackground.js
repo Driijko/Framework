@@ -1,6 +1,6 @@
 // IMPORTS ////////////////////////////////////////////////////////////
 // Import libraries ---------------------------------------------------
-import {useState} from "react";
+import {useEffect} from "react";
 import styled, {css, attrs} from "styled-components";
 
 // Import custom hooks -------------------------------------------------
@@ -12,9 +12,14 @@ const SiteBackgroundDiv = styled("div")`${({mousePos})=>css`
     width: 100vw;
     height: 100vh;
     transition-timing-function: linear;
-    transition-duration: 2s;
-    background-color: rgb(${255 * (mousePos.x / window.innerWidth)}, 0, 0);
-
+    transition-duration: 1s;
+    background-color: 
+        rgb(
+            ${100 + (155 * (mousePos.x / window.innerWidth))},
+            ${100 * (mousePos.y / window.innerHeight)}, 
+            0
+        )
+    ;
     box-sizing: border-box;
     border: 50px solid magenta;
 `}`;
@@ -22,7 +27,9 @@ const SiteBackgroundDiv = styled("div")`${({mousePos})=>css`
 // COMPONENT ///////////////////////////////////////////////////////
 function SiteBackground() {
 
-    const mousePos = useMousePosition();
+    // The argument you pass to this function determines how often
+    // in milliseconds, the check is made, so as not to hurt performance.
+    const mousePos = useMousePosition(100);
 
     // RENDER ////////////////////////////////////////////////////
     return (

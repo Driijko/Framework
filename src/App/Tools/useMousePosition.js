@@ -1,6 +1,11 @@
+// IMPORTS ////////////////////////////////////////////////////
+// Import libraries ------------------------------------------
 import { useState, useEffect } from "react";
 
-const useMousePosition = () => {
+// Import helpers --------------------------------------------
+import debounce from "./debounce";
+
+const useMousePosition = (delay) => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
   const updateMousePosition = ev => {
@@ -8,7 +13,7 @@ const useMousePosition = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", updateMousePosition);
+    window.addEventListener("mousemove", debounce(updateMousePosition, delay));
 
     return () => window.removeEventListener("mousemove", updateMousePosition);
   }, []);

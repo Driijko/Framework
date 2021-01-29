@@ -9,6 +9,7 @@ import positioning from "../../../../Tools/Styling Functions/positioning";
 const Caption0 = styled("figcaption")`${({width, spatial})=> css`
     ${positioning(spatial)}
     font-size: ${width/17}px;
+    line-height: ${width / 13}px;
     font-style: italic;
     text-align: center;
 `}`;
