@@ -6,7 +6,7 @@ import Link from "../../2 Elements/Links/Link";
 // COMPONENT ////////////////////////////////////////////////////
 function Page0Layer0({width, tabIndex, enter, triggerExit}) {
     return (
-        <Layer>
+        <Layer type="basic" >
             <Link 
                 linkType={{
                     type: "section",

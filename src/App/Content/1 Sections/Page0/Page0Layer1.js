@@ -9,9 +9,9 @@ import Image from "../../2 Elements/Images/Image";
 import image from "../../3 Assets/visual/images/image.jpg";
 
 // COMPONENT /////////////////////////////////////////////////////////
-function Page0Layer1({width}) {
+function Page0Layer1({width, tabIndex, enter, triggerExit}) {
     return (
-        <Layer>
+        <Layer type="basic" >
             <TextHeader0 
                 width={width}
                 level={1}
