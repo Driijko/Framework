@@ -15,7 +15,7 @@ function layerSectionType(type) {
 
 // COMPONENT ////////////////////////////////////////////////////////////
 const LayerSection = styled("div")`${({type})=>css`
-    background-color: hsla(0, 100%, 50%, 0.5);
+    position: relative;
     box-sizing: border-box;
     ${layerSectionType(type)}
 `}`;

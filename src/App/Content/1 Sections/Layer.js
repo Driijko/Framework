@@ -23,8 +23,6 @@ function layerType(type) {
 const Layer = styled("div")`${({type})=>css`
     position: absolute;
     ${layerType(type)}
-    background-color: purple;
-    border-right: 5px solid blue;
 `}`;
 
 export default Layer;

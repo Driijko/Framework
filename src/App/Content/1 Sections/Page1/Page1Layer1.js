@@ -20,14 +20,27 @@ function Page1Layer1({width, tabIndex, enter, triggerExit}) {
                 <TextHeader0
                     width={width}
                     level={1}
-                    spatial={[0, 4, 20, 7]}
+                    spatial={[0, 20, 20, 7]}
                 >
                     <h1>HEADER AGAIN</h1>
                 </TextHeader0>
             </LayerSection>
-            {/* <LayerSection type="column" >
-
-            </LayerSection> */}
+            <LayerSection type="column" >
+                <TextHeader0
+                    width={width}
+                    level={1}
+                    spatial={[0, 0, 20, 7]}
+                >
+                    <h1>HEADER YES</h1>
+                </TextHeader0>
+                <TextHeader0
+                    width={width}
+                    level={1}
+                    spatial={[0, 20, 20, 7]}
+                >
+                    <h1>HEADER FOREVER</h1>
+                </TextHeader0>
+            </LayerSection>
         </Layer>
     );
 };
