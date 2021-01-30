@@ -13,6 +13,7 @@ import SiteBackground from "./Content/0 Site/SiteBackground";
 import {SiteForeground} from "./Content/0 Site/SiteForeground";
 import Page0 from "./Content/1 Sections/Page0/Page0";
 import Page1 from "./Content/1 Sections/Page1/Page1";
+import Page2 from "./Content/1 Sections/Page2/Page2";
 
 // Import Music ---------------------------------------------- 
 // import Audio from "./Tools/Audio";
@@ -28,6 +29,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Page0} />
             <Route path="/test" component={Page1} />
+            <Route path="/page2" component={Page2} />
           </Switch>
         </Router>
         <SiteForeground />

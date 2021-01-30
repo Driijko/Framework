@@ -18,11 +18,20 @@ function layerType(type) {
             flex-direction: column;
         `;
     }
+    else if (type === "row") {
+        return `
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+        `;
+    };
 };
 
+// COMPONENT //////////////////////////////////////////////////////////
 const Layer = styled("div")`${({type})=>css`
     position: absolute;
     ${layerType(type)}
 `}`;
 
+// EXPORTS //////////////////////////////////////////////////////////
 export default Layer;
