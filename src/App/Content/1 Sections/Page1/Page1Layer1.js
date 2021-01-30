@@ -7,9 +7,10 @@ import TextHeader0 from "../../2 Elements/Text/TextHeaders/TextHeader0";
 
 // COMPONENT /////////////////////////////////////////////////////////
 function Page1Layer1({width, height, tabIndex, enter, triggerExit}) {
+    const containerSize = {width: width, height: height}
     return (
         <Layer type="column">
-            <LayerSection type="column" containerLength={height} >
+            <LayerSection type="column" containerSize={containerSize} >
                 <TextHeader0
                     width={width}
                     level={1}
@@ -25,7 +26,7 @@ function Page1Layer1({width, height, tabIndex, enter, triggerExit}) {
                     <h1>HEADER AGAIN</h1>
                 </TextHeader0>
             </LayerSection>
-            <LayerSection type="column" containerLength={height}>
+            <LayerSection type="column" containerSize={containerSize}>
                 <TextHeader0
                     width={width}
                     level={1}

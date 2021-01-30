@@ -42,6 +42,7 @@ const LinkStyle0 = styled("a")`${({
     text-align: center;
     font-size: ${width / 10}px;
     cursor: pointer;
+    pointer-events: auto;
 `}`;
 
 export default LinkStyle0;
