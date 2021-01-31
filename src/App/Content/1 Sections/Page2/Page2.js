@@ -7,7 +7,7 @@ import Page2Layer1 from "./Page2Layer1";
 
 function Page2(props) {
     return (
-        <Page maxFocusableElements={2}>     
+        <Page maxFocusableElements={1}>     
             <Page2Layer0 />
             <Gutter />
             <Page2Layer1 />

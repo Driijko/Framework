@@ -14,29 +14,47 @@ function Link({
 }) {
 
     // STYLE //////////////////////////////////////////////////////////
+
+    let linkTypeElement;
     let linkStyleElement;
 
-    if (linkStyle.number === 0) {
-        linkStyleElement = (
-            <LinkStyle0
-                width={width}
-                spatial={spatial}
-                colors={linkStyle.colors}
-            >{children}</LinkStyle0>
-        );
+    if (linkType.type === "external") {
+
+        if (linkStyle.number === 0) {
+            linkStyleElement = (
+                <LinkStyle0
+                    width={width}
+                    spatial={spatial}
+                    colors={linkStyle.colors}
+                    href={linkType.href}
+                    target="_blank"
+                >
+                    {children}
+                </LinkStyle0>
+            );
+        }
     }
+    else if (linkType.type === "section") {
 
-    // TYPE ////////////////////////////////////////////////////
-    let linkTypeElement;
+        if (linkStyle.number === 0) {
+            linkStyleElement = (
+                <LinkStyle0
+                    width={width}
+                    spatial={spatial}
+                    colors={linkStyle.colors}
+                >
+                    {children}
+                </LinkStyle0>
+            )
+        }
 
-    if (linkType.type === "section") {
         linkTypeElement = (
-            <SectionLink 
+            <SectionLink
                 triggerExit={linkType.triggerExit}
                 linkTo={linkType.linkTo}
             />
-        );
-    };
+        )
+    }
 
     // RENDER //////////////////////////////////////////////////////////
     return (
@@ -45,7 +63,7 @@ function Link({
             enterSelect={enterSelect}
         >
             {linkStyleElement}
-            {linkTypeElement}
+            {linkTypeElement ? linkTypeElement : <></>}
         </InteractiveElement>
     );
 };

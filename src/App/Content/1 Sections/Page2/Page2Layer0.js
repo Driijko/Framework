@@ -60,12 +60,6 @@ function Page2Layer0({width, height, tabIndex, enter, triggerExit}) {
                     LINK 1
                 </Link>
             </LayerSection>
-            {/* <FixedPosTest
-                    width={width}
-                    spatial={[5, 10, 20, 5]}
-                >
-                    Fixed Position Div
-                </FixedPosTest> */}
         </Layer>
     );
 };
