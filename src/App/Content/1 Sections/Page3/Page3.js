@@ -1,8 +1,5 @@
 // IMPORTS //////////////////////////////////////////////
-import {useEffect} from "react";
-import styled, {css} from "styled-components";
 import NewPage from "../NewPage";
-import LayerDiv from "../LayerDiv";
 import Gutter from "../Gutter";
 import Page3Layer0 from "./Page3Layer0";
 import Page3Layer1 from "./Page3Layer1";
@@ -14,13 +11,12 @@ function Page3() {
 
     // RENDER //////////////////////////////////////////////////
     return (
-        <NewPage initialLayerFocus="layer0">
+        <NewPage layerNum={2}>
             <NewLayer 
                 type="basic" 
                 focus={{
-                    layerId: "layer0",
+                    layerNum: 1,
                     focusableElements: 3,
-                    transition: "layer1",
                 }}
             >
                 <Page3Layer0 />
@@ -29,9 +25,8 @@ function Page3() {
             <NewLayer
                 type="basic"
                 focus={{
-                    layerId: "layer1",
+                    layerNum: 2,
                     focusableElements: 3,
-                    transition: "layer0",
                 }}
             >
                 <Page3Layer1 />

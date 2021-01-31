@@ -46,7 +46,7 @@ const enterTime = pageTransitionDuration / 2;
 const exitTime = pageTransitionDuration / 2;
 
 // COMPONENT ////////////////////////////////////////////////////////////
-function NewPage({children, initialLayerFocus}) {
+function NewPage({children, layerNum}) {
 
     // CONTEXT /////////////////////////////////////////////////////////////
     const {triggerForegroundAnimate} = useContext(SiteForegroundContext);
@@ -103,9 +103,23 @@ function NewPage({children, initialLayerFocus}) {
     };
 
     // LAYER FOCUS //////////////////////////////////////////////////////
-    const [layerFocus, setLayerFocus] = useState(initialLayerFocus);
+    const [layerFocus, setLayerFocus] = useState(0);
+    const [startingTabIndex, setStartingTabIndex] = useState("first");
+
+    function changeLayerFocus(direction) {
+        if (direction === "forwards") {
+            setLayerFocus((layerFocus + 1) % (layerNum + 1));
+            setStartingTabIndex("first");
+        }
+        else if (direction === "backwards") {
+            setLayerFocus((layerFocus + layerNum) % (layerNum + 1));
+            setStartingTabIndex("last");
+        };
+    };
 
     // KEYBOARD INPUT //////////////////////////////////////////////////
+    // The 'tab' variable tracks whether the user is tabbing forwards
+    // or backwards.
     const [tab, setTab] = useState(null);
 
     // 'useKey' returns true if key is held down.
@@ -113,6 +127,8 @@ function NewPage({children, initialLayerFocus}) {
     const enterKey = useKey("Enter");
     const shiftKey = useKey("Shift");
 
+    // This useEffect sets the 'tab' variable depending on whether 
+    // the user is just pressing tab, or pressing tab and shift.
     useEffect(()=> {
         if (tabKey) {
             if (shiftKey) {
@@ -127,24 +143,13 @@ function NewPage({children, initialLayerFocus}) {
         }
     },[tabKey]);
 
-    // CHILDREN PROPS ////////////////////////////////////////////////////////////////
-    // Here we add props to the child elements, aka  layers
-    // const layers = [];
-    // Children.forEach(children, (child, index) => {
-    //     if (index === 0) {
-    //         layers.push(
-    //             cloneElement(child, {
-    //                 key: index,
-    //                 tabIndex: tabIndex,
-    //                 enter: enter,
-    //                 "triggerExit": triggerExit,
-    //             })
-    //         );
-    //     }
-    //     else {
-    //         layers.push(child);
-    //     };
-    // });
+
+    // WHEN LAYER FOCUS IS 0 ///////////////////////////////////
+    useEffect(()=> {
+        if (tab && layerFocus === 0) {
+            changeLayerFocus(tab);
+        }
+    }, [tab]);
 
     // CHILDREN PROPS //////////////////////////////////////////////
     const layers = [];
@@ -154,7 +159,8 @@ function NewPage({children, initialLayerFocus}) {
                 cloneElement(child, {
                     key: index,
                     layerFocus: layerFocus,
-                    "setLayerFocus": setLayerFocus,
+                    "changeLayerFocus": changeLayerFocus,
+                    startingTabIndex: startingTabIndex,
                     tab: tab,
                     enterKey: enterKey,
                     "triggerExit": triggerExit,
@@ -166,30 +172,14 @@ function NewPage({children, initialLayerFocus}) {
         };
     });
 
-    // RENDER ////////////////////////////////////////////////////////////
-
-    // return (
-    //     <div>
-    //         <PageDiv phase={phase}>
-    //             {phase === "exit" ?
-    //                 <Redirect to={leaveTo}/>
-    //                 : null
-    //             } 
-    //             <UniformResponse>
-    //                 {layers}
-    //             </UniformResponse>
-    //         </PageDiv>
-    //     </div>
-    // );
-
-    // TESTING /////////////////////////////////////////////////////
+    // RENDER /////////////////////////////////////////////////////
     return (
         <PageDiv phase={phase}>
             {phase === "exit" ?
                 <Redirect to={leaveTo} />
                 : null
             }
-            
+
             {/* <Audio audio={[sfxEnterExit]} playAudio={playSfx} /> */}
 
             <UniformResponse>

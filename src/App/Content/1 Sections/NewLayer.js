@@ -7,38 +7,39 @@ import LayerDiv from "./LayerDiv";
 
 // COMPONENT ///////////////////////////////////////////////////////
 function NewLayer({
-    children, type, enterKey, tab, triggerExit, layerFocus, setLayerFocus,
-    focus, width, height
+    children, type, enterKey, tab, triggerExit, layerFocus, changeLayerFocus,
+    focus, width, height, startingTabIndex
 }) {
 
     // TAB INDEX ///////////////////////////////////////////////////
-    const [tabIndex, setTabIndex] = useState(0);
+    const [tabIndex, setTabIndex] = useState(null);
 
     useEffect(()=> {
-        if (tab && layerFocus === focus.layerId) {
+        if (layerFocus === focus.layerNum) {
+            if (startingTabIndex === "first") {
+                setTabIndex(1);
+            }
+            else if (startingTabIndex === "last") {
+                setTabIndex(focus.focusableElements);
+            };
+        };
+    },[layerFocus]);
+
+    useEffect(()=> {
+        if (tab && layerFocus === focus.layerNum) {
             if (tab === "forwards") {
                 if (tabIndex === focus.focusableElements) {
-                    if (focus.transition === "cycle") {
-                        setTabIndex(0);
-                    }
-                    else {
-                        setLayerFocus(focus.transition);
-                        setTabIndex(0);
-                    };
+                    changeLayerFocus("forwards");
+                    setTabIndex(0);
                 }
                 else {
                     setTabIndex(tabIndex + 1);
                 };
             }
             else if (tab === "backwards") {
-                if (tabIndex === 0) {
-                    if (focus.transition === "cycle") {
-                        setTabIndex(focus.focusableElements);
-                    }
-                    else {
-                        setLayerFocus(focus.transition);
-                        setTabIndex(0);
-                    };
+                if (tabIndex === 1) {
+                    changeLayerFocus("backwards");
+                    setTabIndex(0);
                 }
                 else {
                     setTabIndex(tabIndex - 1);
@@ -54,7 +55,7 @@ function NewLayer({
         height: height,
         enterKey: enterKey,
         "triggerExit": triggerExit,
-        "setLayerFocus": setLayerFocus,
+        "changeLayerFocus": changeLayerFocus,
     })
     
     // RENDER ////////////////////////////////////////////////////
