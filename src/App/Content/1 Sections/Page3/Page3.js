@@ -2,24 +2,12 @@
 import {useEffect} from "react";
 import styled, {css} from "styled-components";
 import NewPage from "../NewPage";
+import LayerDiv from "../LayerDiv";
+import Gutter from "../Gutter";
+import Page3Layer0 from "./Page3Layer0";
+import Page3Layer1 from "./Page3Layer1";
+import NewLayer from "../NewLayer";
 
-// TESTING ///////////////////////////////////////////////////////
-const TestDiv = styled("div")`${({offset})=>css`
-    position: absolute;
-    color: white;
-    width: 400px;
-    height: 400px;
-    background-color: black;
-    left: ${offset}px;
-`}`;
-
-function Test({enterKey, triggerExit, layerFocus, setLayerFocus, tab, offset}) {
-
-    
-    return (
-        <TestDiv offset={offset}>{enterKey ? "enter" : null}</TestDiv>
-    );
-};
 
 // COMPONENT ////////////////////////////////////////////
 function Page3() {
@@ -27,9 +15,27 @@ function Page3() {
     // RENDER //////////////////////////////////////////////////
     return (
         <NewPage initialLayerFocus="layer0">
-            <Test offset={0}/>
-            <div></div>
-            <Test offset={500}/>
+            <NewLayer 
+                type="basic" 
+                focus={{
+                    layerId: "layer0",
+                    focusableElements: 3,
+                    transition: "layer1",
+                }}
+            >
+                <Page3Layer0 />
+            </NewLayer>
+            <Gutter />
+            <NewLayer
+                type="basic"
+                focus={{
+                    layerId: "layer1",
+                    focusableElements: 3,
+                    transition: "layer0",
+                }}
+            >
+                <Page3Layer1 />
+            </NewLayer>
         </NewPage>
     );
 };
