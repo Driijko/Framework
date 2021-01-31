@@ -30,6 +30,7 @@ function layerType(type) {
 // COMPONENT //////////////////////////////////////////////////////////
 const Layer = styled("div")`${({type})=>css`
     position: absolute;
+    background-color: black;
     ${layerType(type)}
 `}`;
 

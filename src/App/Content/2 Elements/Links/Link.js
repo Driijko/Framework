@@ -13,11 +13,11 @@ function Link({
     linkType, linkStyle, spatial, width, focus, enterSelect, children
 }) {
 
-    // STYLE //////////////////////////////////////////////////////////
-
+    // Component variables ---------------------------------------
     let linkTypeElement;
     let linkStyleElement;
 
+    // External links -------------------------------------------
     if (linkType.type === "external") {
 
         if (linkStyle.number === 0) {
@@ -32,8 +32,9 @@ function Link({
                     {children}
                 </LinkStyle0>
             );
-        }
+        };
     }
+    // Section links ----------------------------------------------
     else if (linkType.type === "section") {
 
         if (linkStyle.number === 0) {
@@ -45,16 +46,16 @@ function Link({
                 >
                     {children}
                 </LinkStyle0>
-            )
-        }
+            );
+        };
 
         linkTypeElement = (
             <SectionLink
                 triggerExit={linkType.triggerExit}
                 linkTo={linkType.linkTo}
             />
-        )
-    }
+        );
+    };
 
     // RENDER //////////////////////////////////////////////////////////
     return (
